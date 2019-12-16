@@ -34,65 +34,105 @@
             <div class="form-group">
                 <h4>Question 1</h4>
                 <label for="survey-q1">Your mind is always buzzing with unexplored ideas and plans.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q1" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q1">Select an Option</select>
 
                 <h4>Question 2</h4>
                 <label for="survey-q2">Generally speaking, you rely more on your experience than your
                     imagination.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q2" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q2">Select an Option</select>
 
                 <h4>Question 3</h4>
                 <label for="survey-q3">You find it easy to stay relaxed and focused even when there is some pressure.
                 </label>
-                <select class="form-control survey-questions display-inline" id="survey-q3" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q3">Select an Option</select>
 
                 <h4>Question 4</h4>
                 <label for="survey-q4">You rarely do something just out of sheer curiosity.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q4" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q4">Select an Option</select>
 
                 <h4>Question 5</h4>
                 <label for="survey-q5">People can rarely upset you.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q5" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q5">Select an Option</select>
 
                 <h4>Question 6</h4>
                 <label for="survey-q6">It is often difficult for you to relate to other people’s feelings.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q6" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q6">Select an Option</select>
 
                 <h4>Question 7</h4>
                 <label for="survey-q7">In a discussion, truth should be more important than people’s
                     sensitivities.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q7" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q7">Select an Option</select>
 
                 <h4>Question 8</h4>
                 <label for="survey-q8">You rarely get carried away by fantasies and ideas.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q8" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q8">Select an Option</select>
 
                 <h4>Question 9</h4>
                 <label for="survey-q9">You think that everyone’s views should be respected regardless of whether they
                     are supported by facts or not.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q9" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q9">Select an Option</select>
 
                 <h4>Question 10</h4>
                 <label for="survey-q10">You feel more energetic after spending time with a group of people.</label>
-                <select class="form-control survey-questions display-inline" id="survey-q10" >Select an Option</select>
+                <select class="form-control survey-questions display-inline" id="survey-q10">Select an Option</select>
 
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                <button type="submit" id="submit-profile" class="btn btn-primary mb-2">Submit</button>
             </div>
         </form>
     </div>
 
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+    <!-- https://code.jquery.com/jquery-3.4.1.min.js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="./assets/app.js"></script>
+    <!-- <script src="./app/public/assets/app.js"></script> -->
+
+
+    <script>
+        
+        for (let quesNum = 1; quesNum <= 10; quesNum++) {
+            let newOption = $("<Option selected disabled>").text("Select and Option")
+            $("#survey-q" + quesNum).append(newOption)
+            for (let optionNum = 1; optionNum <= 5; optionNum++) {
+                let newOption = $("<Option>")
+
+                if (optionNum === 1) {
+                    newOption.text(optionNum + " Strongly Disagree")
+                }
+                else if (optionNum === 5) {
+                    newOption.text(optionNum + " Strongly Agree")
+                }
+                else {
+                    newOption.text(optionNum)
+                }
+                $("#survey-q" + quesNum).append(newOption)
+            }
+        }
+
+
+        $("#submit-profile").on("click", function (event) {
+            event.preventDefault()
+            console.log("clicked submit!")
+
+            var newProfile = {
+                name: "NewName", //$("#name").val().trim(),
+                photo: "photo address", //$("#role").val().trim(),
+                scores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            };
+
+            console.log(newProfile)
+            $.post("/", newProfile)
+                .then(function (data) {
+                    console.log("add.html", data);
+                });
+        })
+    </script>
 
 </body>
 
