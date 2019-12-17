@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" id="name">
 
                 <label for="image-address">Link to Photo Image (Required)</label>
-                <input type="text" class="form-control" id="image_address">
+                <input type="text" class="form-control" id="image-address">
             </div>
         </form>
 
@@ -103,6 +103,7 @@
 
             for (let i = 1; i <= maxVal; i++) {
                 options[i] = $("<Option>").text(i)
+                options[i].attr("value", i)
             }
 
             options[1].text("1 Strongly Disagree")
@@ -118,15 +119,19 @@
             console.log("clicked submit!")
 
             var newProfile = {
-                name: "NewName", //$("#name").val().trim(),
-                photo: "photo address", //$("#role").val().trim(),
-                scores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                name: $("#name").val().trim(),
+                photoAddress: $("#image-address").val().trim(),
+                scores: []
             };
 
+            for (let i = 1; i <= 10; i++) {
+                newProfile.scores[i - 1] = $("#survey-q" + i).val()
+            }
+
             console.log(newProfile)
-            $.post("/", newProfile)
+            $.post("/survey", newProfile)
                 .then(function (data) {
-                    console.log("add.html", data);
+
                 });
         })
     </script>
