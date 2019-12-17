@@ -6,8 +6,11 @@ module.exports = function (app) {
 
     });
 
-    app.post('/', function (req, res) {
+    app.post('/survey', function (req, res) {
 
+        friends.push(req.body)
+        console.log(friends)
+        res.json(friends);
     });
 }
 
