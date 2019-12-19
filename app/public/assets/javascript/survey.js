@@ -32,7 +32,7 @@ $(".form-control").change(function () {
 
 $("#submit-profile").on("click", function (event) {
 
-        event.preventDefault()
+    event.preventDefault()
     //this method is used to validate user inputs
     var isInputValid = () => {
 
@@ -79,12 +79,15 @@ $("#submit-profile").on("click", function (event) {
     }
 
 
-    if (isInputValid()) {
+    if (!isInputValid()) {
         //send information to api
         console.log(newProfile)
         $.post("/survey", newProfile)
             .then((data) => {
-
+                console.log(data)
+                $('#match-name').text(data.name)
+                $('#profile-image').attr('src','images/' + data.photoAddress)
+                $('#viewFriendModal').modal('show');
             });
     }
     else {
@@ -92,3 +95,5 @@ $("#submit-profile").on("click", function (event) {
         event.preventDefault()
     }
 })
+
+
