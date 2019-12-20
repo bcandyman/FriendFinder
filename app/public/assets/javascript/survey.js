@@ -20,7 +20,6 @@ for (let quesNum = 1; quesNum <= 10; quesNum++) {
 
     $("#survey-q" + quesNum).append(options)
 }
-console.log("LLL")
 
 //remove is-invalid upon changing input.
 //this is if user previously tried to enter data with invalid inputs
@@ -34,8 +33,8 @@ $("#submit-profile").on("click", function (event) {
 
     event.preventDefault()
     //this method is used to validate user inputs
-    var isInputValid = () => {
-
+    var isInputValid = (newProfile) => {
+        console.log("IN")
         let result = true;
 
         if (newProfile.name.trim().length === 0) {
@@ -78,21 +77,23 @@ $("#submit-profile").on("click", function (event) {
         newProfile.scores[i - 1] = parseInt($("#survey-q" + i).val())
     }
 
+    console.log(newProfile)
 
-    if (!isInputValid()) {
+    if (isInputValid(newProfile)) {
         //send information to api
         console.log(newProfile)
         $.post("/survey", newProfile)
             .then((data) => {
-                console.log(data)
-                $('#match-name').text(data.name)
-                $('#profile-image').attr('src','images/' + data.photoAddress)
+                const photoNum = Math.floor(Math.random() * 3) + 1;
+                console.log(data);
+                $('#match-name').text(data.name);
+                $('#profile-image').attr('src', 'images/121819' + photoNum + '.jpg');
                 $('#viewFriendModal').modal('show');
             });
     }
     else {
         //do not clear form if form was invalid upon submitting.
-        event.preventDefault()
+        event.preventDefault();
     }
 })
 
