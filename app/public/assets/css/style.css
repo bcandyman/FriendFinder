@@ -2,3 +2,25 @@
     margin: auto;
     display: block;
 }
+
+.body{
+    background-color: aliceblue;
+}
+
+#submit-profile{
+    width: 200px;
+}
+
+body{
+    background-image: url("../images/skin_side_up.png");
+    background-attachment: fixed;
+}
+
+header{
+    background-color:lightblue;
+    
+}
+
+.header{
+    height: 60px;
+}
