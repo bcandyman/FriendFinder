@@ -2,15 +2,8 @@
 var friends = require('../data/friends.js');
 
 
-
 //determines closest match to user
 const findFriend = (userProfile) => {
-
-
-    //initialize vars
-    const myScore = getScore(userProfile);
-    let closestMatch = friends[0];
-
 
     //returns total score to profile passed
     const getScore = (profile) => {
@@ -24,13 +17,17 @@ const findFriend = (userProfile) => {
         return score;
     }
 
+    //initialize vars
+    const myScore = getScore(userProfile);
+    let closestMatch = friends[0];
+    
     //set initial difference between user and default friend
     let currentDiff = Math.abs(myScore - getScore(closestMatch));
 
     /*loop through friends array, testing if proposed
     friend is a better match than the current match.*/
     for (let i = 0; i < friends.length - 1; i++) {
-
+        
         /*set proposedDiff to score difference between
         user and proposed friend*/
         let proposedDiff = Math.abs(myScore - getScore(friends[i]));
@@ -59,7 +56,7 @@ module.exports = function (app) {
 
 
     app.post('/survey', function (req, res) {
-
+        
         //set user data to userProfile
         const userProfile = req.body;
 
