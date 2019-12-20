@@ -1,41 +1,62 @@
-var profiles = require('../data/friends.js')
+//access all friends
+var friends = require('../data/friends.js');
 
-const getScore = (profile) => {
-    let score = 0;
 
-    profile.scores.forEach((val) => {
-        score += parseInt(val);
-    })
 
-    return score;
-}
+//determines closest match to user
+const findFriend = (userProfile) => {
 
-let findFriend = (userProfile) => {
 
+    //initialize vars
     const myScore = getScore(userProfile);
-    let closestFriend = profiles[0];
+    let closestMatch = friends[0];
 
-    for (let i = 0; i < profiles.length - 1; i++) {
-        let currentDiff = Math.abs(myScore - getScore(closestFriend));
-        let proposedDiff = Math.abs(myScore - getScore(profiles[i]));
 
+    //returns total score to profile passed
+    const getScore = (profile) => {
+        let score = 0;
+
+        //sum of all scores in profile
+        profile.scores.forEach((val) => {
+            score += parseInt(val);
+        })
+
+        return score;
+    }
+
+    //set initial difference between user and default friend
+    let currentDiff = Math.abs(myScore - getScore(closestMatch));
+    
+    /*loop through friends array, testing if proposed
+    friend is a better match than the current match.*/
+    for (let i = 0; i < friends.length - 1; i++) {
+        
+        /*set proposedDiff to score difference between
+        user and proposed friend*/ 
+        let proposedDiff = Math.abs(myScore - getScore(friends[i]));
+
+        //if the proposed friend is a closer match to the user
         if (proposedDiff < currentDiff) {
-            closestFriend = profiles[i]
+            //set closestMatch to proposed friend
+            closestMatch = friends[i]
         }
     }
-    return closestFriend
+
+    //return object of the closest match
+    return closestMatch
 }
 
 
+//export to make available to server.js
 module.exports = function (app) {
 
-    app.get("/api/profiles", function (req, res) {
-        res.json(profiles);
+    app.get("/api/profiles/all", function (req, res) {
+        res.json(friends);
     });
 
     app.post('/survey', function (req, res) {
         const userProfile = req.body;
-        profiles.push(userProfile);
+        friends.push(userProfile);
         const yourFriend = findFriend(userProfile);
 
         res.json(yourFriend);
