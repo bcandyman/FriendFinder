@@ -5,7 +5,7 @@ for (let quesNum = 1; quesNum <= 10; quesNum++) {
     const maxVal = 5
 
     //add defalut value
-    options[0] = $("<Option selected>").text("Select and Option").attr("value", -1)
+    options[0] = $("<Option selected>").text("Select an Option").attr("value", -1)
     // options[0].attr("value", -1)
 
     //add options 1 through 5
@@ -53,6 +53,14 @@ $("#submit-profile").on("click", function (event) {
             $("#image-address").removeClass('is-invalid')
         }
 
+        if (newProfile.gender == -1) {
+            $("#gender").addClass('is-invalid')
+            result = false
+        }
+        else {
+            $("#gender").removeClass('is-invalid')
+        }
+
         newProfile.scores.forEach((val, index) => {
             if (val === -1) {
                 $("#survey-q" + (index + 1)).addClass('is-invalid')
@@ -69,6 +77,7 @@ $("#submit-profile").on("click", function (event) {
     var newProfile = {
         name: $("#name").val().trim(),
         photoAddress: $("#image-address").val().trim(),
+        gender: $("#gender").val(),
         scores: []
     };
 
@@ -84,10 +93,20 @@ $("#submit-profile").on("click", function (event) {
         console.log(newProfile)
         $.post("/survey", newProfile)
             .then((data) => {
-                const photoNum = Math.floor(Math.random() * 3) + 1;
+
+                let photoGender = ''
+
+                if ($('gender').val() === 'f') {
+                    photoGender = 'm'
+                }
+                else {
+                    photoGender = 'f'
+                }
+
+                const photoNum = Math.floor(Math.random() * 4) + 1;
                 console.log(data);
                 $('#match-name').text(data.name);
-                $('#profile-image').attr('src', 'images/121819' + photoNum + '.jpg');
+                $('#profile-image').attr('src', 'images/' + photoNum + photoGender + '.png');
                 $('#viewFriendModal').modal('show');
             });
     }
