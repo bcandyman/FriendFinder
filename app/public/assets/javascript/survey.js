@@ -90,18 +90,12 @@ $("#submit-profile").on("click", function (event) {
 
     if (isInputValid(newProfile)) {
         //send information to api
-        console.log(newProfile)
         $.post("/survey", newProfile)
             .then((data) => {
 
-                let photoGender = ''
+                console.log(data)
 
-                if ($('gender').val() === 'f') {
-                    photoGender = 'm'
-                }
-                else {
-                    photoGender = 'f'
-                }
+                let photoGender = data.gender
 
                 const photoNum = Math.floor(Math.random() * 4) + 1;
                 console.log(data);
