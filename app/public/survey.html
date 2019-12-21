@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -16,7 +17,7 @@
 
     <header class="shadow p-3 mb-5">
         <div class="container header">
-            <h2>Survey</h2>
+            Friend Survey
         </div>
     </header>
 
@@ -29,7 +30,15 @@
                 <input type="text" class="form-control mb-2" id="name">
 
                 <label for="image-address">Link to Photo Image (Required)</label>
-                <input type="text" class="form-control" id="image-address">
+                <input type="text" class="form-control mb-2" id="image-address">
+
+                <label for="friend-gender">Gender</label>
+                <select class="mb-3 form-control survey-questions display-inline" id="gender">
+                    <Option selected value="-1">Select an Option</Option>
+                    <Option value="m">Male</Option>
+                    <Option value="f">Female</Option>
+                </select>
+
             </div>
         </form>
 
@@ -39,57 +48,47 @@
             <div class="form-group">
                 <h4>Question 1</h4>
                 <label for="survey-q1">Your mind is always buzzing with unexplored ideas and plans.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q1">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q1"></select>
 
                 <h4>Question 2</h4>
                 <label for="survey-q2">Generally speaking, you rely more on your experience than your
                     imagination.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q2">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q2"></select>
 
                 <h4>Question 3</h4>
                 <label for="survey-q3">You find it easy to stay relaxed and focused even when there is some pressure.
                 </label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q3">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q3"></select>
 
                 <h4>Question 4</h4>
                 <label for="survey-q4">You rarely do something just out of sheer curiosity.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q4">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q4"></select>
 
                 <h4>Question 5</h4>
                 <label for="survey-q5">People can rarely upset you.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q5">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q5"></select>
 
                 <h4>Question 6</h4>
                 <label for="survey-q6">It is often difficult for you to relate to other people’s feelings.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q6">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q6"></select>
 
                 <h4>Question 7</h4>
                 <label for="survey-q7">In a discussion, truth should be more important than people’s
                     sensitivities.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q7">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q7"></select>
 
                 <h4>Question 8</h4>
                 <label for="survey-q8">You rarely get carried away by fantasies and ideas.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q8">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q8"></select>
 
                 <h4>Question 9</h4>
                 <label for="survey-q9">You think that everyone’s views should be respected regardless of whether they
                     are supported by facts or not.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q9">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q9"></select>
 
                 <h4>Question 10</h4>
                 <label for="survey-q10">You feel more energetic after spending time with a group of people.</label>
-                <select class="mb-3 form-control survey-questions display-inline" id="survey-q10">Select an
-                    Option</select>
+                <select class="mb-3 form-control survey-questions display-inline" id="survey-q10"></select>
 
                 <div class="row">
                     <button type="submit" id="submit-profile" data-target="#exampleModalCenter"
@@ -112,7 +111,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
             </div>
         </div>
