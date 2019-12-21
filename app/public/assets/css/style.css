@@ -1,26 +1,27 @@
-#profile-image{
-    margin: auto;
-    display: block;
+#profile-image {
+	margin: auto;
+	display: block;
 }
 
-.body{
-    background-color: aliceblue;
+#submit-profile {
+	width: 200px;
 }
 
-#submit-profile{
-    width: 200px;
+.body {
+	background-color: aliceblue;
 }
 
-body{
-    background-image: url("../images/skin_side_up.png");
-    background-attachment: fixed;
+.header {
+	height: 60px;
 }
 
-header{
-    background-color:lightblue;
-    
+body {
+	background-image: url("../images/skin_side_up.png");
+	background-attachment: fixed;
+	font-family: "Quicksand", sans-serif;
 }
 
-.header{
-    height: 60px;
+header {
+	background-color: lightblue;
+	font-size: 50px;
 }
