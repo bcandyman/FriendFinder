@@ -7,12 +7,33 @@
 	width: 200px;
 }
 
+.btn{
+    background-color: steelblue !important;
+    border-color: steelblue;
+}
+
 .body {
 	background-color: aliceblue;
 }
 
 .header {
 	height: 60px;
+}
+
+.survey-questions{
+    max-width: 150px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+.jumbotron{
+    background-color: aliceblue;
+}
+
+a{
+    color: steelblue;
 }
 
 body {
@@ -22,6 +43,5 @@ body {
 }
 
 header {
-	background-color: lightblue;
-	font-size: 50px;
+	background-color: #b4d0ec;
 }
