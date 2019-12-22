@@ -111,3 +111,10 @@ $("#submit-profile").on("click", function (event) {
 })
 
 
+
+$(document).on('click' , "#modal-close", function (e) {
+    
+    window.location.href='/'
+})
+
+
